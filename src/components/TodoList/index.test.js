@@ -1,8 +1,8 @@
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import 'jest-enzyme';
-import TodoList from '../index';
-import TodoItem from '../../TodoItem/index';
+import TodoList from './index';
+import TodoItem from '../TodoItem/index';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });

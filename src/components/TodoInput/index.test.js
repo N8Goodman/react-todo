@@ -1,7 +1,7 @@
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import 'jest-enzyme';
-import TodoInput from '../index';
+import TodoInput from './index';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
