@@ -8,8 +8,21 @@ class TodoContainer extends Component {
     term: ''
   }
 
+  updateInput = (event) => {
+    this.setState({term: event.target.value});
+  }
+
+  addItem = () => {
+    this.state.term !== '' && this.setState({
+      items: [...this.state.items, this.state.term],
+      term: ''
+    })
+  }
+
   render = () => (
     <div className="todoContainer">
+      <TodoInput item={this.state.term} addItem={this.addItem} updateInput={this.updateInput} />
+      <TodoList todoItems={this.state.items} />
     </div>
   )
 }
