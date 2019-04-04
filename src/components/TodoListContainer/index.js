@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TodoList from '../TodoList';
-import { getTodos } from '../../reducers/todos/actions';
+import { getTodos, toggleItem } from '../../reducers/todos/actions';
 import { connect } from 'react-redux';
 
 class TodoContainer extends Component {
@@ -10,21 +10,17 @@ class TodoContainer extends Component {
 
   render = () => {
     return <div className="todoContainer">
-      <TodoList todoItems={this.props.items} />
+      <TodoList todoItems={this.props.items} toggleItem={this.props.toggleItem} />
     </div>
   }
 }
 
 const mapStateToProps = state => ({
-    items: state.todos.items
+  items: state.todos.items
 })
-
-const mapDispatchToProps = {
-  getTodos: () => getTodos()
-}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getTodos, toggleItem }
 )(TodoContainer);
    
