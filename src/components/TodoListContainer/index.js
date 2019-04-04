@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import TodoList from '../TodoList';
-import TodoInput from '../TodoInput';
+import { getTodos } from '../../reducers/todos/actions';
+import { connect } from 'react-redux';
 
 class TodoContainer extends Component {
-  state = {
-    items: ['first todo item'],
-    term: ''
+  componentDidMount() {
+    this.props.getTodos();
   }
 
-  updateInput = (event) => {
-    this.setState({term: event.target.value});
-  }
-
-  addItem = () => {
-    this.state.term !== '' && this.setState({
-      items: [...this.state.items, this.state.term],
-      term: ''
-    })
-  }
-
-  render = () => (
-    <div className="todoContainer">
-      <TodoInput item={this.state.term} addItem={this.addItem} updateInput={this.updateInput} />
-      <TodoList todoItems={this.state.items} />
+  render = () => {
+    return <div className="todoContainer">
+      <TodoList todoItems={this.props.items} />
     </div>
-  )
+  }
 }
 
-export default TodoContainer;
+const mapStateToProps = state => ({
+    items: state.todos.items
+})
+
+const mapDispatchToProps = {
+  getTodos: () => getTodos()
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoContainer);
+   

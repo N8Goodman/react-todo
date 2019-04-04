@@ -3,8 +3,8 @@ import TodoItem from '../TodoItem';
 
 const TodoList = ({ todoItems }) => (
   <ul>
-    {todoItems && todoItems.map((item, index) =>
-      <TodoItem key={index} item={item} />
+    {todoItems && todoItems.map((item) =>
+      <TodoItem key={item.id} item={item} />
     )}
   </ul>
 )
